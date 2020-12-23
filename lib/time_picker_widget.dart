@@ -2029,7 +2029,7 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
 
   void _handleOk() {
     if (!_isSelectableTime(selectedTime)) {
-      _notifyFailValidation('Seleccion no disponible.');
+      _notifyFailValidation('Unavailable selection.');
       return;
     }
 
@@ -2145,7 +2145,7 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
               aspectRatio: 1.0,
               child: _Dial(
                   mode: _mode,
-                  use24HourDials: use24HourDials,
+                  use24HourDials: false, //use24HourDials,
                   selectedTime: _selectedTime,
                   onChanged: _handleTimeChanged,
                   onHourSelected: _handleHourSelected,
