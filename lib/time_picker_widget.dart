@@ -2091,7 +2091,8 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
     final TimeOfDayFormat timeOfDayFormat = localizations.timeOfDayFormat(
         alwaysUse24HourFormat: false //media.alwaysUse24HourFormat
         );
-    final bool use24HourDials = hourFormat(of: timeOfDayFormat) != HourFormat.h;
+    final bool use24HourDials =
+        false; // hourFormat(of: timeOfDayFormat) != HourFormat.h;
     final ThemeData theme = Theme.of(context);
     final ShapeBorder shape =
         TimePickerTheme.of(context).shape ?? _kDefaultShape;
@@ -2145,7 +2146,7 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
               aspectRatio: 1.0,
               child: _Dial(
                   mode: _mode,
-                  use24HourDials: false, //use24HourDials,
+                  use24HourDials: use24HourDials,
                   selectedTime: _selectedTime,
                   onChanged: _handleTimeChanged,
                   onHourSelected: _handleHourSelected,
