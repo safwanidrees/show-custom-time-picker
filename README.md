@@ -19,4 +19,4 @@ showCustomTimePicker(
 
 [DEMO](https://dartpad.dartlang.org/5c32e473c8c1c9687966453d0dcf42de?)
 
-You can see a complete sample in `example/main.dart` file
+You can see a complete sample in `example/example.dart` file
