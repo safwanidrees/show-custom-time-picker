@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../lib/time_picker_widget.dart';
+import 'time_picker_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,9 +36,8 @@ class _CustomTimePickerDemoState extends State<CustomTimePickerDemo> {
                 // DEMO --------------
                 showCustomTimePicker(
                     context: context,
-                    // It is a must if you provide selectableTimePredicate
-                    onFailValidation: (message) =>
-                        showMessage(context, message),
+                    onFailValidation: (context) =>
+                        showMessage(context, 'Unavailable selection.'),
                     initialTime: TimeOfDay(
                         hour: _availableHours.first,
                         minute: _availableMinutes.first),

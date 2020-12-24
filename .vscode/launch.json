@@ -6,7 +6,6 @@
     "configurations": [
         {
             "name": "time_picker_widget",
-            "program": "example/main.dart",
             "request": "launch",
             "type": "dart"
         }

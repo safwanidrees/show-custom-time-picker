@@ -8,7 +8,7 @@ It is a custom showTimePicker to allow you set a selectableTimePredicate like yo
 showCustomTimePicker(
     context: context,
     // It is a must if you provide selectableTimePredicate
-    onFailValidation: (message) => print(message),
+    onFailValidation: (context) => print('Unavailable selection'),
     initialTime: TimeOfDay(hour: 2, minute: 0),
     selectableTimePredicate: (time) =>
         time.hour > 1 &&
@@ -19,4 +19,4 @@ showCustomTimePicker(
 
 [DEMO](https://dartpad.dartlang.org/5c32e473c8c1c9687966453d0dcf42de?)
 
-You can see a complete sample in `main.dart` file
+You can see a complete sample in `example/main.dart` file

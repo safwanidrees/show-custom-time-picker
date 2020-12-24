@@ -1,3 +1,5 @@
+## 1.0.0+8
+- return context on fail validation
 ## 1.0.0+7
 - example folder & changelog file
 ## 1.0.0+6

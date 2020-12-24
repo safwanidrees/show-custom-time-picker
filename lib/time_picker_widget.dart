@@ -2028,7 +2028,7 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
 
   void _handleOk() {
     if (!_isSelectableTime(selectedTime)) {
-      _notifyFailValidation('Unavailable selection.');
+      _notifyFailValidation();
       return;
     }
 
@@ -2328,7 +2328,7 @@ Future<TimeOfDay> showCustomTimePicker(
     String helpText,
     RouteSettings routeSettings,
     bool Function(TimeOfDay) selectableTimePredicate,
-    Function(String) onFailValidation}) async {
+    Function(BuildContext) onFailValidation}) async {
   assert(context != null);
   assert(initialTime != null);
   assert(useRootNavigator != null);
@@ -2336,8 +2336,6 @@ Future<TimeOfDay> showCustomTimePicker(
   assert(debugCheckHasMaterialLocalizations(context));
   assert(onFailValidation != null || selectableTimePredicate == null,
       "'onFailValidation' can't be null if 'selectableTimePredicate' has been set");
-
-  _notifyFailValidation = (message) => onFailValidation?.call(message);
 
   _isSelectableTime = (time) => selectableTimePredicate?.call(time) ?? true;
 
@@ -2352,6 +2350,7 @@ Future<TimeOfDay> showCustomTimePicker(
     context: context,
     useRootNavigator: useRootNavigator,
     builder: (BuildContext context) {
+      _notifyFailValidation = () => onFailValidation?.call(context);
       return builder == null ? dialog : builder(context, dialog);
     },
     routeSettings: routeSettings,
@@ -2363,4 +2362,4 @@ void _announceToAccessibility(BuildContext context, String message) {
 }
 
 bool Function(TimeOfDay time) _isSelectableTime;
-Function(String) _notifyFailValidation;
+Function() _notifyFailValidation;
