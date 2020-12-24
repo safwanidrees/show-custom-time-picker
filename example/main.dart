@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'time_picker_widget.dart';
+import '../lib/time_picker_widget.dart';
 
 void main() {
   runApp(MyApp());
