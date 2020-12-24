@@ -25,6 +25,9 @@ class CustomTimePickerDemo extends StatefulWidget {
 class _CustomTimePickerDemoState extends State<CustomTimePickerDemo> {
   String selectedTime;
 
+  List<int> _availableHours = [1, 4, 6, 8, 12];
+  List<int> _availableMinutes = [0, 10, 30, 45, 50];
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Center(
@@ -34,13 +37,16 @@ class _CustomTimePickerDemoState extends State<CustomTimePickerDemo> {
                 showCustomTimePicker(
                     context: context,
                     // It is a must if you provide selectableTimePredicate
-                    onFailValidation: (message) => print(message),
-                    initialTime: TimeOfDay(hour: 2, minute: 0),
+                    onFailValidation: (message) =>
+                        showMessage(context, message),
+                    initialTime: TimeOfDay(
+                        hour: _availableHours.first,
+                        minute: _availableMinutes.first),
                     selectableTimePredicate: (time) =>
-                        time.hour > 1 &&
-                        time.hour < 14 &&
-                        time.minute % 10 == 0).then((time) =>
-                    setState(() => selectedTime = time?.format(context))),
+                        _availableHours.indexOf(time.hour) != -1 &&
+                        _availableMinutes.indexOf(time.minute) != -1).then(
+                    (time) =>
+                        setState(() => selectedTime = time?.format(context))),
             // --------------
 
             child: Text(
@@ -50,4 +56,60 @@ class _CustomTimePickerDemoState extends State<CustomTimePickerDemo> {
           ),
         ),
       );
+
+  showMessage(BuildContext context, String message) => showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 16,
+              ),
+              Icon(
+                Icons.warning,
+                color: Colors.amber,
+                size: 56,
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF231F20),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              InkWell(
+                onTap: () => Navigator.of(context).pop(),
+                child: Container(
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(
+                      border:
+                          Border(top: BorderSide(color: Color(0xFFE8ECF3)))),
+                  child: Text(
+                    'Cerrar',
+                    style: TextStyle(
+                        color: Color(0xFF2058CA),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      });
 }

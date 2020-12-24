@@ -1804,7 +1804,6 @@ class _HourMinuteTextFieldState extends State<_HourMinuteTextField> {
         ),
         hintStyle: widget.style
             .copyWith(color: colorScheme.onSurface.withOpacity(0.36)),
-        // TODO(rami-a): Remove this logic once https://github.com/flutter/flutter/issues/54104 is fixed.
         errorStyle: const TextStyle(
             fontSize: 0.0,
             height: 0.0), // Prevent the error text from appearing.
@@ -1910,7 +1909,7 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
     _selectedTime = widget.initialTime;
     _selectableTimePredicate = widget.selectableTimePredicate;
     _entryMode = widget.initialEntryMode;
-    _autoValidate = false;
+//     _autoValidate = false;
   }
 
   @override
@@ -1924,7 +1923,7 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
   TimePickerEntryMode _entryMode;
   _TimePickerMode _mode = _TimePickerMode.hour;
   _TimePickerMode _lastModeAnnounced;
-  bool _autoValidate;
+//   bool _autoValidate;
 
   TimeOfDay get selectedTime => _selectedTime;
   TimeOfDay _selectedTime;
@@ -1960,20 +1959,20 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
     });
   }
 
-  void _handleEntryModeToggle() {
-    setState(() {
-      switch (_entryMode) {
-        case TimePickerEntryMode.dial:
-          _autoValidate = false;
-          _entryMode = TimePickerEntryMode.input;
-          break;
-        case TimePickerEntryMode.input:
-          _formKey.currentState.save();
-          _entryMode = TimePickerEntryMode.dial;
-          break;
-      }
-    });
-  }
+//   void _handleEntryModeToggle() {
+//     setState(() {
+//       switch (_entryMode) {
+//         case TimePickerEntryMode.dial:
+//           _autoValidate = false;
+//           _entryMode = TimePickerEntryMode.input;
+//           break;
+//         case TimePickerEntryMode.input:
+//           _formKey.currentState.save();
+//           _entryMode = TimePickerEntryMode.dial;
+//           break;
+//       }
+//     });
+//   }
 
   void _announceModeOnce() {
     if (_lastModeAnnounced == _mode) {
@@ -2036,9 +2035,9 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
     if (_entryMode == TimePickerEntryMode.input) {
       final FormState form = _formKey.currentState;
       if (!form.validate()) {
-        setState(() {
-          _autoValidate = true;
-        });
+//         setState(() {
+//           _autoValidate = true;
+//         });
         return;
       }
       form.save();
@@ -2088,9 +2087,9 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
   Widget build(BuildContext context) {
     assert(debugCheckHasMediaQuery(context));
     final MediaQueryData media = MediaQuery.of(context);
-    final TimeOfDayFormat timeOfDayFormat = localizations.timeOfDayFormat(
-        alwaysUse24HourFormat: false //media.alwaysUse24HourFormat
-        );
+//     final TimeOfDayFormat timeOfDayFormat = localizations.timeOfDayFormat(
+//         alwaysUse24HourFormat: false //media.alwaysUse24HourFormat
+//         );
     final bool use24HourDials =
         false; // hourFormat(of: timeOfDayFormat) != HourFormat.h;
     final ThemeData theme = Theme.of(context);
@@ -2115,7 +2114,6 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
         //       : MaterialLocalizations.of(context).dialModeButtonLabel,
         // ),
         Expanded(
-          // TODO(rami-a): Move away from ButtonBar to avoid https://github.com/flutter/flutter/issues/53378.
           child: ButtonBar(
             layoutBehavior: ButtonBarLayoutBehavior.constrained,
             children: <Widget>[
@@ -2206,7 +2204,7 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
       case TimePickerEntryMode.input:
         picker = Form(
           key: _formKey,
-          autovalidate: _autoValidate,
+//           autovalidate: _autoValidate,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,

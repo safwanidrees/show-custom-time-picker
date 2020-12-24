@@ -15,4 +15,6 @@ showCustomTimePicker(
     setState(() => selectedTime = time?.format(context)))
 ```
 
+[DEMO](https://dartpad.dartlang.org/5c32e473c8c1c9687966453d0dcf42de?)
+
 You can see a complete sample in `main.dart` file
