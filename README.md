@@ -2,7 +2,7 @@
 
 It is a custom showTimePicker to allow you set a selectableTimePredicate like you do in showDatePicker.
 
-<img src="https://gitlab.com/jorgesanure-pub-dep/image-upload-field/-/raw/master/assets/demo.gif" height='300px'>
+<img src="https://gitlab.com/jorgesanure-pub-dep/show-custom-time-picker/-/raw/master/assets/demo.gif" height='300px'>
 
 ```dart
 showCustomTimePicker(
