@@ -1,3 +1,5 @@
+## 1.0.0+10
+- null safety
 ## 1.0.0+9
 - fix readme example path
 ## 1.0.0+8
