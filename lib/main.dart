@@ -23,7 +23,7 @@ class CustomTimePickerDemo extends StatefulWidget {
 }
 
 class _CustomTimePickerDemoState extends State<CustomTimePickerDemo> {
-  String selectedTime;
+  String? selectedTime;
 
   List<int> _availableHours = [1, 4, 6, 8, 12];
   List<int> _availableMinutes = [0, 10, 30, 45, 50];
@@ -42,7 +42,7 @@ class _CustomTimePickerDemoState extends State<CustomTimePickerDemo> {
                         hour: _availableHours.first,
                         minute: _availableMinutes.first),
                     selectableTimePredicate: (time) =>
-                        _availableHours.indexOf(time.hour) != -1 &&
+                        _availableHours.indexOf(time!.hour) != -1 &&
                         _availableMinutes.indexOf(time.minute) != -1).then(
                     (time) =>
                         setState(() => selectedTime = time?.format(context))),
